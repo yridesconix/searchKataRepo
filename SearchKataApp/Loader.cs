@@ -8,6 +8,9 @@ using SearchKataApp.Entities;
 
 namespace SearchKataApp
 {
+    /// <summary>
+    /// Loads file 
+    /// </summary>
     public class Loader
     {
         /// <summary>

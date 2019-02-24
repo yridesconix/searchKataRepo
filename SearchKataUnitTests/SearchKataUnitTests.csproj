@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="LoaderUnitTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SearchUnitTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SearchKataApp\SearchKataApp.csproj">
