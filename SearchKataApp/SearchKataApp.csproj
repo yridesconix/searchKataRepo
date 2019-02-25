@@ -41,16 +41,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\Letter.cs" />
-    <Compile Include="Enums\Directions.cs" />
-    <Compile Include="Loader.cs" />
+    <Compile Include="Common\Entities\Letter.cs" />
+    <Compile Include="Common\Enums\Directions.cs" />
+    <Compile Include="Business Layer\Loader.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Search.cs" />
+    <Compile Include="Business Layer\Search.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Puzzles\puzzle.txt" />
+    <Content Include="Puzzles\second puzzle.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
