@@ -21,66 +21,26 @@ namespace SearchKataUnitTests
             search = new Search(loader.Data, loader.SearchTerms);
         }
 
-        //load forwards vertical arrays/collections 
-        //load backwards vertical arrays/collections 
-        //load forwards horizontal arrays/collections 
-        //load backwards horizontal arrays/collections 
-
-        [TestMethod]
-        public void whenSearchIsPassedARowOrColumnNumberTheLettersOfThatRowOrColumnIsReturned()
-        {
-            var horizontal = "KYLBQQPMDFCKEAB";
-            var horizontalBackwards = "BAEKCFDMPQQBLYK";
-            var vertical = "IWJERZEMMJBECUM";
-            var verticalBackwards = "MUCEBJMMEZREJWI";
-            Assert.AreEqual(horizontal, search.ReturnHorizontal(14));
-            Assert.AreEqual(horizontalBackwards, search.ReturnHorizontalBackwards(14));
-            Assert.AreEqual(vertical, search.ReturnVertical(7));
-            Assert.AreEqual(verticalBackwards, search.ReturnVerticalBackwards(7));
-        }
-
-        [TestMethod]
-        public void whenReturnVerticalForwardsAndBackwardsIsRunListOfStringsIsReturned()
-        {
-            var searchables = search.ReturnVerticalForwardsAndBackwards();
-            var vertical = "IWJERZEMMJBECUM";
-            var verticalBackwards = "MUCEBJMMEZREJWI";
-            Assert.IsNotNull(searchables);
-            Assert.IsTrue(searchables.Contains(vertical));
-            Assert.IsTrue(searchables.Contains(verticalBackwards));
-        }
-
-        //load forwards upward diagonal arrays/collections 
-        //load backwards upward diagonal arrays/collections 
-        //load forwards downward diagonal arrays/collections 
-        //load backwards downward diagonal arrays/collections 
-
-        [TestMethod]
-        public void whenReturnDiagonalUpwardsForwardsAndBackwardsIsRunListOfStringsIsReturned()
-        {
-            var searchables = search.ReturnDiagonalUpwardsForwardsAndBackwards();
-            var diagonal = "KUUK";
-            Assert.IsNotNull(searchables);
-            Assert.IsTrue(searchables.Contains(diagonal));
-        }
-
-        [TestMethod]
-        public void whenReturnDiagonalDownwardsForwardsAndBackwardsIsRunListOfStringsIsReturned()
-        {
-            var searchables = search.ReturnDiagonalDownwardsForwardsAndBackwards();
-            var diagonal = "OUTE";
-            Assert.IsNotNull(searchables);
-            Assert.IsTrue(searchables.Contains(diagonal));
-        }
-
         //- fields to be searched will be letter with coordinates: a, 1, 1 (list of objects - letter, x pos, y pos) 
-
         //return x,y coordinates for each word found 
         [TestMethod]
-        public void whenSearchIsRunListofStringsAreReturned()
+        public void whenSearchIsRunListofStringsAreReturnedAndSevenMatchesAreFound()
         {
-            //throw new NotImplementedException();
-            Assert.IsInstanceOfType(search.ExecuteSearch(), typeof(List<string>));
+            var output = new List<string> {
+                "BONES: (0,6),(0,7),(0,8),(0,9),(0,10)",
+                "KHAN: (5,9),(5,8),(5,7),(5,6)",
+                "KIRK: (4,7),(3,7),(2,7),(1,7)",
+                "SCOTTY: (0,5),(1,5),(2,5),(3,5),(4,5),(5,5)",
+                "SPOCK: (2,1),(3,2),(4,3),(5,4),(6,5)",
+                "SULU: (3,3),(2,2),(1,1),(0,0)",
+                "UHURA: (4,0),(3,1),(2,2),(1,3),(0,4)"
+            };
+            var matches = search.ExecuteSearch();
+            Assert.IsInstanceOfType(matches, typeof(List<string>));
+            foreach(var match in matches)
+            {
+                Assert.IsTrue(output.Contains(match));
+            }
         }
     }
 }
